@@ -3,6 +3,13 @@ require 'multipart'
 class StreamController < ApplicationController
   before_filter :default_serialization_method
 
+  def new_stream_key
+    if request.method == :post
+      @query = "/stream/new_stream_key/#{params[:streamname]}.#{@serialization_method}" 
+      @result = justintv_oauth_two_legged_get(@query)
+    end
+  end
+  
   def list
     p = { "offset" => params[:offset], "limit" => params[:limit] }.to_params
 

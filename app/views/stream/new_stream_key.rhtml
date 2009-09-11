@@ -1,0 +1,13 @@
+<h2>stream/new_stream_key</h2>
+
+<% form_tag do %>
+    select a login (single channel): <%= text_field_tag 'login', params[:login] %> <br>
+	stream name: <%= text_field_tag 'streamname', params[:streamname] %> <br>
+	serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <br/><br/> jsonp callback: <%= text_field_tag 'jsonp', params[:jsonp] %>
+    <%= submit_tag 'Show New Stream Key' %>
+<% end %>
+
+<%= render :partial => "main/results" %>

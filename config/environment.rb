@@ -15,11 +15,11 @@ require 'multipart'
 require 'shorthand'
 
 API_PATH = "/api"
-API_HOST = "api.justin.tv"
-API_PORT = 80
+API_HOST = "localhost"
+API_PORT = 3000
 
-JTV_CONSUMER = OAuth::Consumer.new("QZjD7tEeQTCIUkNy8kU8g", 
-                      "aUjifB4PrbVT1fipWelbJbyZdRaZfzNRzLuoeTygxY", 
+JTV_CONSUMER = OAuth::Consumer.new("ziDKTkCOG4s1qTBUIBuQ", 
+                      "s9Rm7mV9jYMPIU4QDeTocfgSNodPOjvZhHMxSWvLBk", 
                       :site => "http://#{API_HOST}:#{API_PORT}", 
                       :http_method => :get)
 
