@@ -1,12 +1,14 @@
-<h2>stream/new_stream_key</h2>
+<h2>stream/list_callbacks</h2>
 
 <% form_tag do %>
-	stream name: <%= text_field_tag 'streamname', params[:streamname] %> <br>
+	select a channel: <%= text_field_tag 'channel', params[:channel] %> <br>
+	or <br>
+	namespace: <%= text_field_tag 'namespace', params[:namespace] %> <br>
 	serialization method: <br>
     xml: <%= radio_button_tag 'serialization_method', 'xml' %>
     json: <%= radio_button_tag 'serialization_method', 'json' %>
     <br/><br/> jsonp callback: <%= text_field_tag 'jsonp', params[:jsonp] %>
-    <%= submit_tag 'Show New Stream Key' %>
+    <%= submit_tag 'List Callbacks' %>
 <% end %>
 
 <%= render :partial => "main/results" %>

@@ -1,0 +1,16 @@
+<h2>stream/register_callback</h2>
+
+<% form_tag do %>
+    select a channel: <%= text_field_tag 'channel', params[:channel] %> <br>
+	or <br>
+	namespace: <%= text_field_tag 'namespace', params[:namespace] %> <br>
+	Callback url: <%= text_field_tag 'callback_url', params[:callback_url] %> <br>
+	Event: <%= select_tag "event", options_for_select(['stream_up', 'stream_down'], params[:event]) %><br>
+	serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <br/><br/> jsonp callback: <%= text_field_tag 'jsonp', params[:jsonp] %>
+    <%= submit_tag 'Register Callback' %>
+<% end %>
+
+<%= render :partial => "main/results" %>
