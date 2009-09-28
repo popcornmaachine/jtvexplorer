@@ -15,8 +15,8 @@ require 'multipart'
 require 'shorthand'
 
 API_PATH = "/api"
-API_HOST = "localhost"
-API_PORT = 3000
+API_HOST = "staging.justin.tv"
+API_PORT = 80
 
 JTV_CONSUMER = OAuth::Consumer.new("ziDKTkCOG4s1qTBUIBuQ", 
                       "s9Rm7mV9jYMPIU4QDeTocfgSNodPOjvZhHMxSWvLBk", 

@@ -1,0 +1,12 @@
+<h2>chat/create_namespace_chatroom</h2>
+
+<% form_tag do %>
+    select a chatroom name: <%= text_field_tag 'room_name', params[:room_name] %> <br>
+	serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <br/><br/> jsonp callback: <%= text_field_tag 'jsonp', params[:jsonp] %>
+    <%= submit_tag 'Create Room' %>
+<% end %>
+
+<%= render :partial => "main/results" %>

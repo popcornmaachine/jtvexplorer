@@ -24,10 +24,15 @@ class ApplicationController < ActionController::Base
   end
 
   def justintv_get(path)
+    puts "in justintv_get " + API_HOST + ":" + API_PORT.to_s + API_PATH  + path
     path = fix_path(path)
     @req_method = 'GET'
     Net::HTTP.start(API_HOST, API_PORT) { |http|
-      http.get("#{API_PATH}#{path}")
+      #http.get("#{API_PATH}#{path}")
+      req = Net::HTTP::Get.new("#{API_PATH}#{path}")
+      req.basic_auth 'oxygen', 'atom'
+      http.request(req)
+    
     }
   end
   
