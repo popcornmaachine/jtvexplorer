@@ -24,35 +24,41 @@ class StreamController < ApplicationController
     end
   end
   
-  def unregister_callback
-    if request.method == :post
-      @query = "/stream/unregister_callback.#{@serialization_method}" 
-      @result = justintv_oauth_two_legged_post(@query, params)
-    end
-  end
-  
   def list_callbacks
     if request.method == :post
       @query = "/stream/list_callbacks.#{@serialization_method}" 
       @result = justintv_oauth_two_legged_post(@query, params)
     end
   end
+  def register_namespace_callback
+    if request.method == :post
+      @query = "/stream/register_namespace_callback.#{@serialization_method}" 
+      @result = justintv_oauth_two_legged_post(@query, params)
+    end
+  end
+  
+  def unregister_namespace_callback
+    if request.method == :post
+      @query = "/stream/unregister_namespace_callback.#{@serialization_method}" 
+      @result = justintv_oauth_two_legged_post(@query, params)
+    end
+  end
+  
+  def list_namespace_callbacks
+    if request.method == :post
+      @query = "/stream/list_namespace_callbacks.#{@serialization_method}" 
+      @result = justintv_oauth_two_legged_post(@query, params)
+    end
+  end
   def list
     p = { "offset" => params[:offset], "limit" => params[:limit]}
-    if (params[:namespace] != nil and params[:namespace].strip != "")
-      params[:namespace].strip!
-      p.merge!(:namespace => (params[:namespace]))
-    end
+    p[:namespace] = params[:namespace] if not params[:namespace].blank?
+    p[:channel] = params[:login] if not params[:login].blank?
+    p[:category] = params[:category] if not params[:category].blank? and params[:category] != "(ALL)" 
     p = p.to_params
     
     if request.method == :post
-      if (params[:login] != "") # view just the channel?
-        @query = "/stream/list.#{@serialization_method}?channel=#{params[:login]}"
-      elsif (params[:category] == "(ALL)") # all?
-        @query = "/stream/list.#{@serialization_method}?#{p}"
-      else # a specific category
-        @query = "/stream/list.#{@serialization_method}?category=#{params[:category]}&#{p}"
-      end
+      @query = "/stream/list.#{@serialization_method}?#{p}"
       @result = justintv_get(@query)
     end
   end

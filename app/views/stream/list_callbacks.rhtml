@@ -2,8 +2,6 @@
 
 <% form_tag do %>
 	select a channel: <%= text_field_tag 'channel', params[:channel] %> <br>
-	or <br>
-	namespace: <%= text_field_tag 'namespace', params[:namespace] %> <br>
 	serialization method: <br>
     xml: <%= radio_button_tag 'serialization_method', 'xml' %>
     json: <%= radio_button_tag 'serialization_method', 'json' %>
