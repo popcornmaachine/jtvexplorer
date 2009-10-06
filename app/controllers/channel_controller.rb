@@ -79,12 +79,26 @@ class ChannelController < ApplicationController
       p[:volume] = params[:volume] unless params[:volume].blank?
       p[:height] = params[:height] unless params[:height].blank?
       p[:width] = params[:width] unless params[:width].blank?
+      p[:namespace] = params[:namespace] unless params[:namespace].blank?
 
       @query = "/channel/embed/#{params[:login]}.#{@serialization_method}?#{p.to_params}"
       @result = justintv_get(@query)      
     end
   end
-
+  
+  def namespace_embed
+    if request.method == :post
+      p = { }
+      p[:volume] = params[:volume] unless params[:volume].blank?
+      p[:height] = params[:height] unless params[:height].blank?
+      p[:width] = params[:width] unless params[:width].blank?
+      p[:namespace] = params[:namespace] unless params[:namespace].blank?
+      @query = "/channel/namespace_embed/#{params[:login]}.#{@serialization_method}?#{p.to_params}"
+      @result = justintv_get(@query)
+    end
+  end
+  
+  
   def chat_embed
     if request.method == :post
       p = { }
@@ -101,9 +115,21 @@ class ChannelController < ApplicationController
       p = { }
       p[:height] = params[:height] unless params[:height].blank?
       p[:width] = params[:width] unless params[:width].blank?
-
+      p[:namespace] = params[:namespace] unless params[:namespace].blank?
+      
       @query = "/channel/publisher_embed.#{@serialization_method}?#{p.to_params}"
       @result = justintv_oauth_post(@query, {})     
+    end
+  end
+  def namespace_publisher_embed
+    if request.method == :post
+      p = { }
+      p[:height] = params[:height] unless params[:height].blank?
+      p[:width] = params[:width] unless params[:width].blank?
+      p[:channel] = params[:channel] unless params[:channel].blank?
+      
+      @query = "/channel/namespace_publisher_embed.#{@serialization_method}?#{p.to_params}"
+      @result = justintv_oauth_two_legged_post(@query, {})     
     end
   end
   

@@ -15,13 +15,24 @@ require 'multipart'
 require 'shorthand'
 
 API_PATH = "/api"
-API_HOST = "localhost.justin.tv"
-API_PORT = 3000
+API_HOST = "api.justin.tv"
+API_PORT = 80
 
-JTV_CONSUMER = OAuth::Consumer.new("ziDKTkCOG4s1qTBUIBuQ", 
-                      "s9Rm7mV9jYMPIU4QDeTocfgSNodPOjvZhHMxSWvLBk", 
-                      :site => "http://#{API_HOST}:#{API_PORT}", 
-                      :http_method => :get)
+
+
+#testns
+#JTV_CONSUMER = OAuth::Consumer.new("ziDKTkCOG4s1qTBUIBuQ", 
+#                      "s9Rm7mV9jYMPIU4QDeTocfgSNodPOjvZhHMxSWvLBk", 
+#                      :site => "http://#{API_HOST}:#{API_PORT}", 
+#                      :http_method => :get)
+
+#ns
+JTV_CONSUMER = OAuth::Consumer.new("C2OyyZEmUz1iuuCiMVNRRQ", 
+                                            "DehkckDi1IXgkYyeEMeSvoNd7oWPB89aDV7vBMa6kig", 
+                                            :site => "http://#{API_HOST}:#{API_PORT}", 
+                                            :http_method => :get)
+
+
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
