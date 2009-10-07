@@ -19,7 +19,6 @@ API_HOST = "api.justin.tv"
 API_PORT = 80
 
 
-
 #testns
 #JTV_CONSUMER = OAuth::Consumer.new("ziDKTkCOG4s1qTBUIBuQ", 
 #                      "s9Rm7mV9jYMPIU4QDeTocfgSNodPOjvZhHMxSWvLBk", 
